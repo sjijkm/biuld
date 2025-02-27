@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直播平台登录</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://cdn.pixabay.com/photo/2024/06/25/21/42/hd-wallpaper-8853669_1280.png') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideIn 0.7s ease-out forwards;
+        }
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h2 {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #fff;
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+        .input-group input:focus {
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            border-color: #007bff;
+            transform: scale(1.05);
+        }
+        .input-group input::placeholder {
+            color: #ccc;
+        }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #ff5e62, #ff9966);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 94, 98, 0.2);
+        }
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .error {
+            color: #ffdddd;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .forgot-password {
+            color: #ffffff;
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 15px;
+            display: inline-block;
+            transition: 0.2s ease-in-out;
+        }
+        .forgot-password:hover {
+            color: #ff9966;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>直播平台登录</h2>
+        <div class="input-group">
+            <label for="username">用户名：</label>
+            <input type="text" id="username" placeholder="请输入用户名">
+            <div class="error" id="usernameError"></div>
+        </div>
+        <div class="input-group">
+            <label for="password">密码：</label>
+            <input type="password" id="password" placeholder="请输入密码">
+            <div class="error" id="passwordError"></div>
+        </div>
+        <button class="btn" onclick="login()">登录</button>
+        <a href="#" class="forgot-password">忘记密码?</a>
+    </div>
+
+    <script>
+        function login() {
+            let username = document.getElementById("username").value.trim();
+            let password = document.getElementById("password").value.trim();
+            
+            let usernameError = document.getElementById("usernameError");
+            let passwordError = document.getElementById("passwordError");
+
+            usernameError.textContent = "";
+            passwordError.textContent = "";
+
+            if (username === "") {
+                usernameError.textContent = "用户名不能为空";
+                return;
+            }
+            if (password === "") {
+                passwordError.textContent = "密码不能为空";
+                return;
+            }
+
+            alert("登录成功！用户名：" + username);
+        }
+    </script>
+
+</body>
+</html>
